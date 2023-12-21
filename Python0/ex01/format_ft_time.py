@@ -5,13 +5,13 @@
 
 #allowed time datetime and all date libraries
 
-from datetime import datetime
-import time
+import datetime as dt
+import time as t
 
-time_stamp = time.time()
+time_stamp = t.time()
 print(f"Seconds since January 1, 1970: {time_stamp:,.4f} or {time_stamp:.2e} in scientific notation")
 
-current_time = datetime.now()
+current_time = dt.datetime.now()
 
 #printing current date in "Mon day year" format
 print(current_time.strftime("%b %d %Y"))
