@@ -25,7 +25,7 @@ def NULL_not_found(obj: any=None) -> int:
             case str() if all(char in chars for char in obj): #case empty ans right quote
                 print(f"Empty: {type(obj)}")
                 return 0
-            case int() if not obj: #case 0             
+            case int() if obj == 0: #case 0             
                 print(f"Zero: {obj} {type(obj)}")
                 return 0
             case float() if obj != obj: #case nan               
@@ -35,10 +35,10 @@ def NULL_not_found(obj: any=None) -> int:
                 print(f"Nothing: {obj} {type(obj)}")
                 return 0
             case _: #other cases
-                print(f"Type not found")
-                return 1
+                raise Exception
 
     except Exception as e:
-        print(type(e))
-        print(f"Exc : {type(e)}")
-        return 0
+        print(f"Type not found")
+        return 1
+        #print(type(e))
+        #print(f"Exc : {type(e)}")
