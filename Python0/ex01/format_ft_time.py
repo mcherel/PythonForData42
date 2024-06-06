@@ -1,7 +1,4 @@
 #!/usr/bin/env python3.10
-# to execute:
-# chmod +x format_ft_time.py
-# ./format_ft_time.py
 
 #allowed time datetime and all date libraries
 
