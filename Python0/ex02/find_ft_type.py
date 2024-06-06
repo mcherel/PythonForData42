@@ -1,8 +1,9 @@
 #!/usr/bin/env python3.10
+import sys
 
-def all_thing_is_obj(obj: any=None) -> int:
+def all_thing_is_obj(obj: any) -> int:
     if not obj:
-        exit()
+        sys.exit()
     match obj:
         case list():
             print(f"List : {type(obj)}")
