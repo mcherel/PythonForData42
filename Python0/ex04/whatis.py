@@ -17,8 +17,8 @@ def whatlist():
     except AssertionError as er:
         if er.args:
             print(f'AssertionError: "{er}"')
-            
-    print()
+    finally:
+        print()
 
 def main():
     whatlist()
