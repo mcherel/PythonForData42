@@ -160,12 +160,14 @@ def main():
         while text == "":
             print("What is the text to count?")
             try:
-                text = sys.stdin.readline().strip()
+                text = sys.stdin.readline()
                 if not text:
                     text = ""
             except KeyboardInterrupt:
                 print("\nKeyboard interrupt received. Ending Input.")
-                sys.exit()
+                sys.exit(1)
+            finally:
+                pass
     if text:
         message(text)
 
