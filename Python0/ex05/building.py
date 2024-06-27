@@ -163,6 +163,7 @@ def main():
                 text = sys.stdin.readline()
                 if not text:
                     text = ""
+
             except KeyboardInterrupt:
                 print("\nKeyboard interrupt received. Ending Input.")
                 sys.exit(1)
@@ -173,6 +174,7 @@ def main():
 
 
 if __name__ == "__main__":
+
     try:
         main()
     except BrokenPipeError:
