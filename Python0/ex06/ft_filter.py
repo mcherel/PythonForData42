@@ -1,5 +1,6 @@
 import typing
 
+
 def ft_filter(*args: typing.Any) -> typing.List[typing.Any]:
     """filter(function or None, iterable) --> filter object
 
@@ -10,7 +11,7 @@ is true. If function is None, return the items that are true.
         if len(args) != 2:
             raise TypeError
         f, i = args
-        if f == None:
+        if f is None:
             return [r for r in i]
         return [r for r in i if f(r)]
     except TypeError as err:
@@ -19,5 +20,3 @@ is true. If function is None, return the items that are true.
             exit(1)
         print(f"{type(err).__name__}: {err}")
         exit(1)
-        
-
