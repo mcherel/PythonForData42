@@ -1,6 +1,6 @@
-import sys
+import typing
 
-def ft_filter(*args):
+def ft_filter(*args: typing.Any) -> typing.List[typing.Any]:
     """filter(function or None, iterable) --> filter object
 
 Return an iterator yielding those items of iterable for which function(item)
@@ -20,52 +20,43 @@ is true. If function is None, return the items that are true.
         print(f"{type(err).__name__}: {err}")
         exit(1)
 '''
-class Filter:
-    def __init__(self, function, iterable):
-        """
-        Initialize the filter object with a function and an iterable.
-        
-        Args:
-            function: A function that returns True or False for each item in the iterable.
-            iterable: An iterable whose items are to be filtered.
-        """
-        self.function = function
-        self.iterable = iterable
+from typing import Any, Callable, List, Tuple, overload
 
-    def __iter__(self):
-        """
-        Return an iterator that yields items from the iterable for which the function returns True.
-        
-        Yields:
-            Items from the iterable for which the function returns True.
-        """
-        return self._filter_generator()
+@overload
+def my_function(func: Callable[[Any], Any], lst: List[Any]) -> None: ...
+@overload
+def my_function(func: Callable[[Any], Any], lst: List[Any], *args: Tuple[Any]) -> None: ...
 
-    def _filter_generator(self):
-        """
-        Generator that yields items from the iterable for which the function returns True.
-        
-        Yields:
-            Items from the iterable for which the function returns True.
-        """
-        for item in self.iterable:
-            if self.function(item):
-                yield item
+def my_function(func: Callable[[Any], Any], lst: List[Any], *args: Any) -> None:
+    print(f"Function: {func.__name__}")
+    print(f"List: {lst}")
+    print(f"Additional arguments: {args}")
+
+    if len(args) == 0:
+        print("No additional arguments.")
+    elif len(args) == 1:
+        print(f"One additional argument: {args[0]}")
+    elif len(args) > 1:
+        print(f"More than one additional argument: {args}")
+
+    # Example: Applying the function to each element in the list
+    results = [func(item) for item in lst]
+    print(f"Results: {results}")
 
 # Example usage
-def is_alpha(item):
-    """Return True if the item is a non-empty string containing only alphabetic characters."""
-    return isinstance(item, str) and item.isalpha()
+def example_func(x: int) -> int:
+    return x * 2
 
-# Test data
-data = ["Hello", "123", "World!", "Python", "", None, True]
+my_list = [1, 2, 3, 4]
 
-# Create a Filter object
-filtered_data = Filter(is_alpha, data)
+# Calling with no additional arguments
+my_function(example_func, my_list)
 
-# Convert the Filter object to a list to see the result
-filtered_list = list(filtered_data)
-print(filtered_list)  # Output: ['Hello', 'Python']
+# Calling with one additional argument
+my_function(example_func, my_list, "extra_arg1")
+
+# Calling with more than one additional argument
+my_function(example_func, my_list, "extra_arg1", "extra_arg2")
 
 '''
         

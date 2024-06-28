@@ -74,3 +74,9 @@ for i in a:
 a2 = f.ft_filter(True,ages) """
 #a = filter(2, 1, 3)
 #a2 = f.ft_filter(2, 1, 3)
+#a = filter(2, 1)
+#a2 = f.ft_filter(2, 1)
+#a = filter(2, [1])
+""" for i in a:
+   print(i) """
+#a2 = f.ft_filter(2, [1])
