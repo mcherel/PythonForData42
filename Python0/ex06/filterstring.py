@@ -1,82 +1,27 @@
 import ft_filter as f
+import sys
 
-print("_________________________")
-print(filter.__doc__)
-print("_________________________")
-print(f.ft_filter.__doc__)
+def arg_check(args) -> bool:
+    try:
+        
+        assert len(args) == 3, "the arguments are bad" # assertion error : user declares a condition to be true
+        string = args[1]
+        for s in string.split():
+          assert s.isalnum(), "argument is not an alphanumerical character"
+        num = args[2]
+        assert num.isnumeric(), "argument is not a positive integer"
+        assert -sys.maxsize-1 <= int(num) <= sys.maxsize, "argument is not an integer"
+        
+        return True
+        
+    except AssertionError as er:
+        if er.args:
+            print(f'AssertionError: "{er}"')
+            sys.exit()
 
-print("_________________________")
-print("TEST 1")
-print("_________________________")
+def main():
+    args = sys.argv
+    print(arg_check(args))
 
-ages = [5, 12, 17, 18, 24, 32]
-
-def myFunc(x):
-  if x < 18:
-    return False
-  else:
-    return True
-
-adults = filter(myFunc, ages)
-adults2 = f.ft_filter(myFunc, ages)
-
-print("_________________________")
-for x in adults:
-  print(x)
-print("_________________________")
-for x in adults2:
-  print(x)
-print("_________________________")
-
-print("_________________________")
-print("TEST 2")
-print("_________________________")
-
-def is_even(n):
-    return n % 2 == 0
-
-numbers = [1, 2, 3, 4, 5, 6]
-even_numbers = filter(is_even, numbers)  # filter object
-even_numbers2 = f.ft_filter(is_even, numbers)  # filter object
-
-# Convert filter object to a list to see the result
-even_numbers_list = list(even_numbers)
-even_numbers_list2 = list(even_numbers2)
-print(even_numbers_list)  # Output: [2, 4, 6]
-print(even_numbers_list2)  # Output: [2, 4, 6]
-
-print("TEST 3")
-print("_________________________")
-
-def is_even(n):
-    return n % 2 == 0
-
-numbers = [1, 2, 3, 4, 5, 6]
-even_numbers = filter(None,numbers)  # filter object
-even_numbers2 = f.ft_filter(None,numbers)  # filter object
-
-# Convert filter object to a list to see the result
-even_numbers_list = list(even_numbers)
-even_numbers_list2 = list(even_numbers2)
-print(even_numbers_list)  # Output: [2, 4, 6]
-print(even_numbers_list2)  # Output: [2, 4, 6]
-print("_________________________")
-
-print("ERROR MANAGEMENT")
-""" a = filter()
-a2 = f.ft_filter() """
-print("_________________________")
-
-""" a = filter(True,ages)
-print(a)
-for i in a:
-  print(a)
-a2 = f.ft_filter(True,ages) """
-#a = filter(2, 1, 3)
-#a2 = f.ft_filter(2, 1, 3)
-#a = filter(2, 1)
-#a2 = f.ft_filter(2, 1)
-#a = filter(2, [1])
-""" for i in a:
-   print(i) """
-#a2 = f.ft_filter(2, [1])
+if __name__== "__main__":
+    main()
