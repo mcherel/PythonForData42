@@ -17,6 +17,6 @@ is true. If function is None, return the items that are true.
     except TypeError as err:
         if len(args) != 2:
             print(f"TypeError: filter expected 2 arguments, got {len(args)}")
-            exit(1)
-        print(f"{type(err).__name__}: {err}")
+        else:
+            print(f"{type(err).__name__}: {err}")
         exit(1)
