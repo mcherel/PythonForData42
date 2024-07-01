@@ -5,8 +5,7 @@ def arg_check(args) -> bool:
     try:
         assert len(args) == 2
         string = args[1]
-        for s in string.split():
-            assert s.isalnum()
+        assert string.isalnum()
         return True
 
     except AssertionError:
