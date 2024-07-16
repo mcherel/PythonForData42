@@ -9,6 +9,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 build/
+bin/
 develop-eggs/
 dist/
 downloads/
@@ -79,3 +80,5 @@ dmypy.json
 
 # Pyright
 .pyright/
+
+.pyvenv.cfg
