@@ -1,0 +1,8 @@
+# pyproject.toml
+# This file is used to specify the build system requirements for the ft_package module.
+# It defines the tools required to build the package, such as setuptools and wheel.
+
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
