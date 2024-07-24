@@ -11,12 +11,12 @@ def whatlist():
         num = int(num)
         assert -sys.maxsize-1 <= num <= sys.maxsize, "argument is not an integer"
 
-        response = "I'm Odd" if num % 2 else  "I'm Even"
+        response = "I'm Odd." if num % 2 else  "I'm Even."
         print(response)
         
     except AssertionError as er:
         if er.args:
-            print(f'AssertionError: "{er}"')
+            print(f'AssertionError: {er}')
     finally:
         print()
 
