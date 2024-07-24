@@ -36,9 +36,6 @@ def NULL_not_found(obj: any=None) -> int:
                 return 0
             case _: #other cases
                 raise Exception
-
     except Exception as e:
         print(f"Type not Found")
         return 1
-        #print(type(e))
-        #print(f"Exc : {type(e)}")
