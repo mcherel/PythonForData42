@@ -12,11 +12,11 @@ is true. If function is None, return the items that are true.
             raise TypeError
         f, i = args
         if f is None:
-            return [r for r in i]
+            return [r for r in i if r]
         return [r for r in i if f(r)]
     except TypeError as err:
         if len(args) != 2:
             print(f"TypeError: filter expected 2 arguments, got {len(args)}")
         else:
             print(f"{type(err).__name__}: {err}")
-        exit(1)
+        #exit(1)

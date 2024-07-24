@@ -76,8 +76,6 @@ print("ERROR MANAGEMENT")
 #a = filter()
 #print(a)
 a2 = f.ft_filter()
-print(list(a2))
-print(a2)
 print("_________________________")
 
 #a = filter(True,ages)

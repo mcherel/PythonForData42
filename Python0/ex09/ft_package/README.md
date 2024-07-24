@@ -72,5 +72,5 @@ print(count_in_list(["toto", "tata", "toto"], "tutu")) # output: 0
     
     Exécutez le script :
     ```
-    python test_script.py
+    python3 test_script.py
     ```
