@@ -37,7 +37,7 @@ filelock==3.13.3
 flake8==7.0.0
 flatbuffers===1.12.1-git20200711.33e2d80-dfsg1-0.6
 fonttools==4.51.0
-ft_package @ file:///mnt/nfs/homes/mcherel-/Projects/python_for_data_science/Python0/ex09/ft_package/dist/ft_package-0.0.1.tar.gz#sha256=4caeb0b456c1dc3110ece91ee51c249d2f905ace6a565e736289c8a4e33729c5
+ft_package @ file:///mnt/nfs/homes/mcherel-/Projects/python_for_data_science/Python0/ex09/ft_package/dist/ft_package-0.0.1.tar.gz#sha256=513ab78c3533cb59384c2361afe50cb0a85dc5350111605976440ede26d2aa16
 GeoIP==1.3.2
 hkdf==0.0.3
 httplib2==0.20.2
