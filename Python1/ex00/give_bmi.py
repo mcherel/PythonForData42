@@ -15,8 +15,11 @@ def give_bmi(height: list[int | float], weight: list[int | float]) -> list[int |
     Raises:
         ValueError: If the lists of heights and weights are not of the same length.
         TypeError: If the values in the lists are not integers or floats.
+        TypeError: If the arguments are not lists.
     """
     try:
+        if type(height) is not list or type(weight) is not list:
+            raise TypeError("Only lists are accepted")
         len_err = "The lists of heights and weights must have the same length."
         if not len(height) == len(weight):
             raise ValueError(len_err)
@@ -45,10 +48,13 @@ def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
         list[bool]: List indicating for each BMI value whether it exceeds the limit (True) or not (False).
 
     Raises:
+        TypeError: BMI has be a list.
         TypeError: If the value of the limit is not integer.
         TypeError: If the values in the BMI list are not integers or floats.
     """
     try:
+        if type(bmi) is not list:
+            raise TypeError("BMI has be a list")
         if not isinstance(limit, (int)):
             raise TypeError("Limit must be an integer")
         type_err = "All values in the lists must be integers or floats."
