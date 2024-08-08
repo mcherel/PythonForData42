@@ -17,7 +17,9 @@ def slice_me(family: list, start: int, end: int) -> list:
             raise ValueError(len_err)
         arr = np.array(family)
         print(f"My shape is : {arr.shape}")
-        return arr.tolist()
+        subarr = arr[start:end, 0:len(family[0])]
+        print(f"My new shape is : {subarr.shape}")
+        return subarr.tolist()
     except (TypeError, ValueError) as e:
         print ("Error:", e)
         exit()
