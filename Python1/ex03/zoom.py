@@ -3,23 +3,17 @@ import numpy as np
 import PIL.Image as Image, PIL.ImageOps as ImageOps
 import subprocess
 
-def zoom(img: str) -> list:
+def zoom(img: str) -> np.ndarray:
     try:
-        image = ImageOps.grayscale(Image.fromarray(load.ft_load(img)))
-        x = 450
-        y = 70
-        h = 850
-        w = 470
+        image = Image.fromarray(load.ft_load(img))
+        x, y, h, w = 450, 70, 850, 470
         box = (x, y, h, w)
         cropped = ImageOps.grayscale(image.crop(box))
-        cropped.save("crop.jpeg")
-        #crop.show()
-        # Execute the eog command with error output redirected to /dev/null
-        subprocess.run(["eog", "crop.jpeg"], stderr=subprocess.DEVNULL)
-        #cv2.waitKey(0) #important
-        #cv2.destroyAllWindows() #important
+        cropped.save("cropped.jpeg")
+        subprocess.run(["eog", "cropped.jpeg"], stderr=subprocess.DEVNULL)
         return np.array(cropped)
-    except:
+    except Exception as e:
+        print(e)
         exit()
 
 
@@ -28,7 +22,9 @@ def main():
     img_array = load.ft_load(img)
     print(f"The shape of image is: {img_array.shape}")
     print(img_array)
+
     cropped = zoom(img)
+
     print(f"The shape of image after slicing is: {cropped.shape}")
     print(cropped)
     del cropped

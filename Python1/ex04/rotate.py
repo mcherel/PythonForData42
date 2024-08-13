@@ -16,8 +16,8 @@ def rotate(img: str) -> np.ndarray:
                 new_arr[x, y] = pixel
 
         Image.fromarray(new_arr).save("rotated.jpeg")
-        print('_____________')
-        subprocess.run(["eog", "rotate.jpeg"], stderr=subprocess.DEVNULL)
+        print()
+        subprocess.run(["eog", "rotated.jpeg"], stderr=subprocess.DEVNULL)
         return new_arr
     except Exception as e:
         print(f"An error occurred: {e}")
@@ -25,12 +25,12 @@ def rotate(img: str) -> np.ndarray:
 
 
 def main():
-    img = "animal.jpeg"
+    img = "cropped.jpeg"
     img_array = ImageOps.grayscale(Image.fromarray(load.ft_load(img)))
     print(f"The shape of image is: {np.array(img_array).shape}")
     print(np.array(img_array))
     irotate = rotate(img)
-    print(f"The shape of image after rotation is: {irotate.shape}")
+    print(f"The shape of image after Transpose is: {irotate.shape}")
     print(irotate)
     del irotate
 
