@@ -4,50 +4,55 @@ import PIL.Image as Image, PIL.ImageOps as ImageOps
 import subprocess
 
 
-def ft_invert(array) -> np.ndarray:
+def ft_invert(array: np.array) -> np.array:
     """ Inverts the color of the image received. """
-    return 255 - array
+    invert = (255 - array).astype(array.dtype)
+    Image.fromarray(invert).save("invert.jpg")
+    print(f"The shape of image is: {invert.shape}")
+    print(load.ft_load("invert.jpg"))
+    return invert
 
-def ft_red(array) -> np.ndarray:
-    red_channel = array.copy()
-    red_channel[:, :, 1] = 0  # Set green channel to 0
-    red_channel[:, :, 2] = 0  # Set blue channel to 0
-    return red_channel
+def ft_red(array: np.array) -> np.array:
+    """ Only red color is left. """
+    red = (array * [1, 0, 0]).astype(array.dtype)
+    Image.fromarray(red).save("red.jpg")
+    print(f"The shape of image is: {red.shape}")
+    print(load.ft_load("red.jpg"))
+    return red
 
 
-def ft_green(array) -> np.ndarray:  
-    return array - ft_blue(array) - ft_red(array)
+def ft_green(array: np.array) -> np.array:
+    """ Only green color is left. """
+    green = np.zeros_like(array)
+    red_and_blue = ((array[:,:,0] - array[:,:,1]) - array[:,:,2])
+    green[:, :, 1] = array[:, :, 1] - red_and_blue
+    green = np.clip(green, 0, 255)
+    Image.fromarray(green).save("green.jpg")
+    print(33333333333333333333333333333333333333)
+    print(f"The shape of image is: {green.shape}")
+    print(load.ft_load("green.jpg"))
+    return green
 
 
-def ft_blue(array) -> np.ndarray:
+def ft_blue(array: np.array) -> np.array:
+    """ Only blue color is left. """
     blue_channel = array.copy()
     blue_channel[:, :, 0] = 0
     blue_channel[:, :, 1] = 0
+    print(4444444444444444444444)
+    Image.fromarray(blue_channel).save("blue.jpg")
+    print(f"The shape of image is: {blue_channel.shape}")
+    print(load.ft_load("blue.jpg"))
     return blue_channel
 
-def ft_grey(array) -> np.ndarray:
-     return (array[:,:,0] / 3 + array[:,:,1] / 3 + array[:,:,2] / 3).astype(array.dtype)
+def ft_grey(array: np.array) -> np.array:
+     """ Only grayscale is left. """
+     grey = (array[:,:,0] / 3 + array[:,:,1] / 3 + array[:,:,2] / 3).astype(array.dtype)
+     Image.fromarray(grey).save("grey.jpg")
+     print(f"The shape of image is: {grey.shape}")
+     print(load.ft_load("grey.jpg"))
+     return grey
 
-
-""" def rotate(img: str) -> np.ndarray:
-    try:
-        image = ImageOps.grayscale(Image.fromarray(load.ft_load(img)))
-
-        width, height = image.size
-
-        new_arr = np.zeros((width, height), dtype=np.uint8)
-        for x in range(width):
-            for y in range(height):
-                pixel = image.getpixel((x, y))
-                new_arr[x, y] = pixel
-
-        Image.fromarray(new_arr).save("rotated.jpeg")
-        print()
-        subprocess.run(["eog", "rotated.jpeg"], stderr=subprocess.DEVNULL)
-        return new_arr
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        exit() """
 
 
 def main():
