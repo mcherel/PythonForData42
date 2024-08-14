@@ -2,6 +2,7 @@
 import os
 import PIL.Image as Image
 import numpy as np
+import matplotlib.pyplot as plt
 
 def is_image_file(path) -> bool:
     try:
@@ -39,6 +40,26 @@ def ft_load(path: str) -> list:
         
     image_rgb = image.convert('RGB')
     image_array = np.array(image_rgb)
+
+    y, x, p = image_array.shape
+    print(x)
+    print(y)
+    print(p)
+
+    # displaythe image with the x and y scales
+
+    fig, ax = plt.subplots()
+    ax.imshow(image_array, extent=[0, x, y, 0])
+    #ax.invert_yaxis()
+
+    #customize the axes
+    ax.set_xlabel("X")
+    ax.set_ylabel("Y")
+    ax.set_xticks(np.arange(0, x+1, 50))
+    ax.set_yticks(np.arange(0, y+1, 50))
+    ax.tick_params(axis='both', labelsize=7)
+
+    plt.show()
     
     #print(f"The shape of image is: {image_array.shape}")
     #time.sleep(5)
@@ -53,7 +74,7 @@ def ft_load(path: str) -> list:
 
 def main():
     #print(ft_load("test.jpg"))
-    ft_load("landscape.jpg")
+    ft_load("animal.jpeg")
 
 
 if __name__ == "__main__":
