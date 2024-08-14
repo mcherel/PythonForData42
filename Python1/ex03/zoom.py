@@ -1,7 +1,34 @@
 import load_image as load
 import numpy as np
 import PIL.Image as Image, PIL.ImageOps as ImageOps
-import subprocess
+import matplotlib.pyplot as plt
+#import subprocess
+
+def show_img(image_array: np.array):
+    print(image_array.shape)
+    y, x = image_array.shape
+
+    print(x)
+    print(y)
+
+
+    # displaythe image with the x and y scales
+    smp ='viridis' if ((image_array.shape + (0, 0)[:3]) == 3) else 'grey'
+
+    fig, ax = plt.subplots()
+    ax.imshow(image_array, extent=[0, x, y, 0], cmap=smp)
+    #ax.invert_yaxis()
+
+    #customize the axes
+    ax.set_xlabel("X")
+    ax.set_ylabel("Y")
+    ax.set_xticks(np.arange(0, x, 50))
+    ax.set_yticks(np.arange(0, y, 50))
+    ax.tick_params(axis='both', labelsize=7)
+
+    plt.show()
+    return fig
+
 
 def zoom(img: str) -> np.ndarray:
     try:
@@ -10,8 +37,11 @@ def zoom(img: str) -> np.ndarray:
         box = (x, y, h, w)
         cropped = ImageOps.grayscale(image.crop(box))
         cropped.save("cropped.jpeg")
-        subprocess.run(["eog", "cropped.jpeg"], stderr=subprocess.DEVNULL)
-        return np.array(cropped)
+        cropped_arr = np.array(cropped)
+        show_img(cropped_arr).savefig("with_scale.jpeg")
+        plt.show()
+        #subprocess.run(["eog", "cropped.jpeg"], stderr=subprocess.DEVNULL)
+        return cropped_arr
     except Exception as e:
         print(e)
         exit()

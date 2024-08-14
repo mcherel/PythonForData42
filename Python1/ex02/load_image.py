@@ -2,9 +2,12 @@
 import os
 import PIL.Image as Image
 import numpy as np
-import time
+
 
 def is_image_file(path) -> bool:
+    """Checks if it's an image file.
+    Returns: bool + error message if False
+    """
     try:
         with Image.open(path) as img:
             img.verify()
@@ -14,6 +17,9 @@ def is_image_file(path) -> bool:
 
 
 def is_accepted_format(path: str, formats: list) -> bool:
+    """Checks if the format is in the given list of formats.
+    Returns: bool
+    """
     _, ext = os.path.splitext(path)
     return (ext.lower() in formats)
 
@@ -42,13 +48,6 @@ def ft_load(path: str) -> list:
     image_array = np.array(image_rgb)
     
     print(f"The shape of image is: {image_array.shape}")
-    #time.sleep(5)
-
-    #del image
-    #first = image_array[0,0:3]
-    #last = np.squeeze(image_array[-1:,-4:-1])
-    #return first
-    #return np.vstack([[first, last]])
     return image_array
 
 

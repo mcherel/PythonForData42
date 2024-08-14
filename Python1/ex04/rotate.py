@@ -1,7 +1,37 @@
 import load_image as load
 import numpy as np
 import PIL.Image as Image, PIL.ImageOps as ImageOps
-import subprocess
+import matplotlib.pyplot as plt
+# import subprocess
+
+def show_img(image_array: np.array):
+    print(image_array.shape)
+    y, x = image_array.shape
+
+    print(x)
+    print(y)
+    print(image_array.shape)
+
+
+    # displaythe image with the x and y scales
+    smp ='viridis' if ((image_array.shape + (0, 0)[:3]) == 3) else 'grey'
+    print(smp)
+    fig, ax = plt.subplots()
+    print(fig)
+    print("hello")
+    ax.imshow(image_array, extent=[0, x, y, 0], cmap=smp)
+    plt.show()
+    print("hi")
+    #ax.invert_yaxis()
+
+    #customize the axes
+    ax.set_xlabel("X")
+    ax.set_ylabel("Y")
+    ax.set_xticks(np.arange(0, x, 50))
+    ax.set_yticks(np.arange(0, y, 50))
+    ax.tick_params(axis='both', labelsize=7)
+
+    return fig
 
 def rotate(img: str) -> np.ndarray:
     try:
@@ -17,7 +47,8 @@ def rotate(img: str) -> np.ndarray:
 
         Image.fromarray(new_arr).save("rotated.jpeg")
         print()
-        subprocess.run(["eog", "rotated.jpeg"], stderr=subprocess.DEVNULL)
+        show_img(np.array(new_arr)).savefig("with_scale.jpeg")
+        #subprocess.run(["eog", "rotated.jpeg"], stderr=subprocess.DEVNULL)
         return new_arr
     except Exception as e:
         print(f"An error occurred: {e}")
