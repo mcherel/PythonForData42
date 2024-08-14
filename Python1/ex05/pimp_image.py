@@ -1,7 +1,6 @@
 import load_image as load
 import numpy as np
-import PIL.Image as Image, PIL.ImageOps as ImageOps
-import subprocess
+import PIL.Image as Image
 
 
 def ft_invert(array: np.array) -> np.array:
@@ -22,13 +21,11 @@ def ft_red(array: np.array) -> np.array:
 
 
 def ft_green(array: np.array) -> np.array:
-    """ Only green color is left. """
-    green = np.zeros_like(array)
-    red_and_blue = ((array[:,:,0] - array[:,:,1]) - array[:,:,2])
-    green[:, :, 1] = array[:, :, 1] - red_and_blue
-    green = np.clip(green, 0, 255)
-    Image.fromarray(green).save("green.jpg")
-    print(33333333333333333333333333333333333333)
+    """Isolate the green channel of the image using only subtraction."""
+    green = array.copy()
+    green[:, :, 0] = 0
+    green[:, :, 2] = 0
+    Image.fromarray(green.astype(np.uint8)).save("green.jpg")
     print(f"The shape of image is: {green.shape}")
     print(load.ft_load("green.jpg"))
     return green
@@ -39,7 +36,6 @@ def ft_blue(array: np.array) -> np.array:
     blue_channel = array.copy()
     blue_channel[:, :, 0] = 0
     blue_channel[:, :, 1] = 0
-    print(4444444444444444444444)
     Image.fromarray(blue_channel).save("blue.jpg")
     print(f"The shape of image is: {blue_channel.shape}")
     print(load.ft_load("blue.jpg"))
