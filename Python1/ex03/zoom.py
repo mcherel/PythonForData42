@@ -1,8 +1,10 @@
 import load_image as load
 import numpy as np
-import PIL.Image as Image, PIL.ImageOps as ImageOps
+import PIL.Image as Image
+import PIL.ImageOps as ImageOps
 import matplotlib.pyplot as plt
-#import subprocess
+# import subprocess
+
 
 def show_img(image_array: np.array):
     print(image_array.shape)
@@ -11,15 +13,13 @@ def show_img(image_array: np.array):
     print(x)
     print(y)
 
-
     # displaythe image with the x and y scales
-    smp ='viridis' if ((image_array.shape + (0, 0)[:3]) == 3) else 'grey'
+    smp = 'viridis' if ((image_array.shape + (0, 0)[:3]) == 3) else 'grey'
 
     fig, ax = plt.subplots()
     ax.imshow(image_array, extent=[0, x, y, 0], cmap=smp)
-    #ax.invert_yaxis()
 
-    #customize the axes
+    # customize the axes
     ax.set_xlabel("X")
     ax.set_ylabel("Y")
     ax.set_xticks(np.arange(0, x, 50))
@@ -40,7 +40,7 @@ def zoom(img: str) -> np.ndarray:
         cropped_arr = np.array(cropped)
         show_img(cropped_arr).savefig("with_scale.jpeg")
         plt.show()
-        #subprocess.run(["eog", "cropped.jpeg"], stderr=subprocess.DEVNULL)
+        # subprocess.run(["eog", "cropped.jpeg"], stderr=subprocess.DEVNULL)
         return cropped_arr
     except Exception as e:
         print(e)
@@ -58,6 +58,7 @@ def main():
     print(f"The shape of image after slicing is: {cropped.shape}")
     print(cropped)
     del cropped
+
 
 if __name__ == "__main__":
     main()

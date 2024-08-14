@@ -2,8 +2,8 @@ import numpy as np
 
 
 def slice_me(family: list, start: int, end: int) -> list:
-    """ Takes as parameters a 2D array, prints its shape, 
-    and returns a truncated version of the array 
+    """ Takes as parameters a 2D array, prints its shape,
+    and returns a truncated version of the array
     based on the provided start and end arguments.
     """
     try:
@@ -25,7 +25,7 @@ def slice_me(family: list, start: int, end: int) -> list:
         print(f"My new shape is : {subarr.shape}")
         return subarr.tolist()
     except (TypeError, ValueError) as e:
-        print ("Error:", e)
+        print("Error:", e)
         exit()
 
 
@@ -34,11 +34,12 @@ def main():
     Main function to test the give_bmi and apply_limit functions.
     """
     family = [[1.80, 78.4],
-    [2.15, 102.7],
-    [2.10, 98.5],
-    [1.88, 75.2]]
+              [2.15, 102.7],
+              [2.10, 98.5],
+              [1.88, 75.2]]
     print(slice_me(family, 0, 2))
     print(slice_me(family, 1, -2))
+
 
 if __name__ == "__main__":
     main()

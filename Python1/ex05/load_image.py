@@ -1,4 +1,3 @@
-
 import os
 import PIL.Image as Image
 import numpy as np
@@ -13,7 +12,7 @@ def is_image_file(path) -> bool:
             img.verify()
             return True, "OK"
     except (IOError, SyntaxError) as err:
-            return False, err
+        return False, err
 
 
 def is_accepted_format(path: str, formats: list) -> bool:
@@ -26,14 +25,14 @@ def is_accepted_format(path: str, formats: list) -> bool:
 
 def ft_load(path: str) -> list:
     # if the name is the same as extension
-    if  any(path == ext for ext in [".jpeg", ".jpg", ".png"]):
+    if any(path == ext for ext in [".jpeg", ".jpg", ".png"]):
         print("Error: wrong file name")
         exit()
     # if the file is not an image
     if not is_image_file(path)[0]:
         print("Error:", is_image_file(path)[1])
         exit()
-    # if the format of the image is not supported 
+    # if the format of the image is not supported
     if not is_accepted_format(path, [".jpeg", ".jpg", ".png"]):
         print("Error: wrong extention")
         exit()
@@ -43,15 +42,15 @@ def ft_load(path: str) -> list:
     if image is None:
         print("Error: unable to loade image.")
         exit()
-        
+
     image_rgb = image.convert('RGB')
     image_array = np.array(image_rgb)
-    
+
     return image_array
 
 
 def main():
-    #print(ft_load("test.jpg"))
+    # print(ft_load("test.jpg"))
     ft_load("landscape.jpg")
 
 

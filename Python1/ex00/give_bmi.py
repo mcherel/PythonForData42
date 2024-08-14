@@ -1,9 +1,11 @@
 import numpy as np
 
 
-def give_bmi(height: list[int | float], weight: list[int | float]) -> list[int | float]:
+def give_bmi(height: list[int | float],
+             weight: list[int | float]) -> list[int | float]:
     """
-    Calculate BMI (Body Mass Index) for a list of given heights and weights.
+    Calculate BMI (Body Mass Index)
+    for a list of given heights and weights.
 
     Args:
         height (list[int | float]): List of heights in meters.
@@ -13,7 +15,7 @@ def give_bmi(height: list[int | float], weight: list[int | float]) -> list[int |
         list[float]: List of corresponding BMI values.
 
     Raises:
-        ValueError: If the lists of heights and weights are not of the same length.
+        ValueError: Lists of heights and weights are not of the same length.
         TypeError: If the values in the lists are not integers or floats.
         TypeError: If the arguments are not lists.
     """
@@ -28,11 +30,11 @@ def give_bmi(height: list[int | float], weight: list[int | float]) -> list[int |
             raise TypeError(type_err)
         if not all(isinstance(i, (int, float)) for i in weight):
             raise TypeError(type_err)
-            
+
         bmi = np.array(weight) / np.array(height) ** 2
         return bmi.tolist()
     except (ValueError, TypeError) as e:
-        print ("Error:", e)
+        print("Error:", e)
         exit()
 
 
@@ -45,7 +47,7 @@ def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
         limit (int): BMI limit value.
 
     Returns:
-        list[bool]: List indicating for each BMI value whether it exceeds the limit (True) or not (False).
+        list[bool]: List indicating for each BMI (True) or (False).
 
     Raises:
         TypeError: BMI has be a list.
@@ -62,7 +64,7 @@ def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
             raise TypeError(type_err)
         return (np.array(bmi) > limit).tolist()
     except (TypeError) as e:
-        print ("Error:", e)
+        print("Error:", e)
         exit()
 
 
@@ -78,6 +80,7 @@ def main():
     limit = 25
     bmi_above_limit = apply_limit(bmi, limit)
     print(f"BMI above the limit of {limit}:", bmi_above_limit)
+
 
 if __name__ == "__main__":
     main()
