@@ -5,7 +5,7 @@ import load_csv
 
 
 def main():
-    file = "../csv_files/population_total.csv"
+    file = "../csv_files/life_expectancy_years.csv"
     lines = load_csv.load(file)
     x = []
     y = []
@@ -19,8 +19,23 @@ def main():
          x.append(row)
     for row in lines[france_idx][1:]:
          y.append(row)
-    print(x)
-    print(y)
+    #print(len(x))
+    #print(len(y))
+    #print(x)
+    #print(y)
+
+    plt.plot(x, y, color='b', label='Life Expectancy')
+    plt.title('France Life Expectancy Projections')
+    # plt.xticks(rotation=25)
+    plt.xlabel('Year') # adds a label to the x-axis
+    plt.ylabel('Life expectancy') # adds a label to the y-axis.
+    #plt.grid(True)
+    plt.xlim(min(x), max(x))
+    plt.ylim(min(y), max(y))
+    #plt.xticks(x)
+    """ fig, ax = plt.subplots()
+    ax.set_xticks(np.arange(0, max(x), 50))
+    ax.set_yticks(np.arange(0, max(y), 50)) """
     """     # Check if the ddata file exists
     if os.path.exists(file):
             # Loading  data into two lists
@@ -66,8 +81,8 @@ def main():
 
 
     # Graph printing
-    """ plt.legend() # ensures the labels for the scatter plot and regression line are displayed.
-    plt.show() """
+    plt.legend() # ensures the labels are displayed.
+    plt.show()
 
 
 if __name__ == "__main__":
