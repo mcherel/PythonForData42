@@ -5,14 +5,19 @@ from pimp_image import ft_green
 from pimp_image import ft_blue
 from pimp_image import ft_grey
 
-...
-array = ft_load("landscape.jpg")
-ft_invert(array)
-ft_red(array)
-ft_green(array)
-ft_blue(array)
-ft_grey(array)
-print(ft_invert.__doc__)
+
+def main():
+    array = ft_load("landscape.jpg")
+    ft_invert(array)
+    ft_red(array)
+    ft_green(array)
+    ft_blue(array)
+    ft_grey(array)
+    print(ft_invert.__doc__)
+
+
+if __name__ == "__main__":
+    main()
 """ Expected output: (docstrings can be different)
 $> python tester.py
 The shape of image is: (257, 450, 3)

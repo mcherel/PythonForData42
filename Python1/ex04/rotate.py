@@ -7,22 +7,14 @@ import matplotlib.pyplot as plt
 
 
 def show_img(image_array: np.array):
-    print(image_array.shape)
+    """Shows the image with a range ofpixels on the side"""
     y, x = image_array.shape
-
-    print(x)
-    print(y)
-    print(image_array.shape)
 
     # displaythe image with the x and y scales
     smp = 'viridis' if ((image_array.shape + (0, 0)[:3]) == 3) else 'grey'
-    print(smp)
     fig, ax = plt.subplots()
-    print(fig)
-    print("hello")
     ax.imshow(image_array, extent=[0, x, y, 0], cmap=smp)
     plt.show()
-    print("hi")
 
     # customize the axes
     ax.set_xlabel("X")
@@ -35,6 +27,7 @@ def show_img(image_array: np.array):
 
 
 def rotate(img: str) -> np.ndarray:
+    """Rotates theimage to 90 degrees andputhsit into grescale"""
     try:
         image = ImageOps.grayscale(Image.fromarray(load.ft_load(img)))
 
@@ -62,7 +55,7 @@ def main():
     print(f"The shape of image is: {np.array(img_array).shape}")
     print(np.array(img_array))
     irotate = rotate(img)
-    print(f"The shape of image after Transpose is: {irotate.shape}")
+    print(f"\nNew shape after Transpose: {irotate.shape}")
     print(irotate)
     del irotate
 

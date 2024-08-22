@@ -25,6 +25,9 @@ def is_accepted_format(path: str, formats: list) -> bool:
 
 
 def ft_load(path: str) -> list:
+    """Opens image after all the checks
+    Returns: np.array
+    """
     # if the name is the same as extension
     if any(path == ext for ext in [".jpeg", ".jpg", ".png"]):
         print("Error: wrong file name")

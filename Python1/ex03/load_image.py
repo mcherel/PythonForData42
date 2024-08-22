@@ -5,6 +5,9 @@ import numpy as np
 
 
 def is_image_file(path) -> bool:
+    """Checks if it's an image file.
+    Returns: bool + error message if False
+    """
     try:
         with Image.open(path) as img:
             img.verify()
@@ -14,11 +17,17 @@ def is_image_file(path) -> bool:
 
 
 def is_accepted_format(path: str, formats: list) -> bool:
+    """Checks if the format is in the given list of formats.
+    Returns: bool
+    """
     _, ext = os.path.splitext(path)
     return (ext.lower() in formats)
 
 
 def ft_load(path: str) -> list:
+    """Opens image after all the checks
+    Returns: np.array
+    """
     # if the name is the same as extension
     if any(path == ext for ext in [".jpeg", ".jpg", ".png"]):
         print("Error: wrong file name")
