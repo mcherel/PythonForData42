@@ -9,22 +9,25 @@ def main():
     lines = load_csv.load(file)
     x = []
     y = []
-    pays = [ i[0] for i in lines[1:]]
-    france_idx = pays.index('France')
+    countries = [ i[0] for i in lines[1:]]
+    france_idx = countries.index('France')
 
     """ stripped_rows = list([[field.strip()
                              for field in row]
                              for row in reader[1:]]) """
-    for row in lines[0][1:]:
-         x.append(row)
-    for row in lines[france_idx][1:]:
-         y.append(row)
+    for year in lines[0][1:]:
+         x.append(int(year.strip()))
+    for value in lines[france_idx][1:]:
+         y.append(float(value.strip()))
     #print(len(x))
     #print(len(y))
     #print(x)
     #print(y)
+    if len(x) != len(y):
+         print("Data length mismach between years and life expectancy")
 
-    plt.plot(x, y, color='b', label='Life Expectancy')
+    # Plotting
+    plt.plot(x, y, color='b', label='Life Expectancy in France')
     plt.title('France Life Expectancy Projections')
     # plt.xticks(rotation=25)
     plt.xlabel('Year') # adds a label to the x-axis
@@ -82,6 +85,8 @@ def main():
 
     # Graph printing
     plt.legend() # ensures the labels are displayed.
+    
+    # Show plot
     plt.show()
 
 
