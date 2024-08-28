@@ -36,7 +36,7 @@ def main():
          print("Data length mismach between years and life expectancy")
 
     # Plotting
-    plt.plot(x, y, color='b', label='Life Expectancy in France')
+    plt.plot(x, y, color='b')
     plt.title('France Life Expectancy Projections')
     # plt.xticks(rotation=25)
     plt.xlabel('Year') # adds a label to the x-axis
