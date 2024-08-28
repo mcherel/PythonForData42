@@ -51,6 +51,7 @@ def main():
     # plotting
     plt.plot(x, y, color='g', label='Population France')
     plt.plot(x, y1, color='b', label='Population Russia')
+    plt.legend(loc='lower right')
     plt.title('Population Projections')
     # plt.xticks(rotation=25)
     plt.xlabel('Year') # adds a label to the x-axis
