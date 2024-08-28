@@ -44,11 +44,7 @@ def main():
     custom_ticks = [300, 1000, 10000]
     custom_labels = ['300', '1k', '10k']
     plt.xticks(ticks=custom_ticks, labels=custom_labels)
-
-    # Graph printing
-    plt.legend()
     plt.show()
-
 
 if __name__ == "__main__":
     main()
