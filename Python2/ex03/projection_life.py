@@ -5,6 +5,13 @@ import load_csv
 
 
 def main():
+    """
+    1. Loads the files
+       *"in-come_per_person_gdppercapita_ppp_inflation_adjusted.csv"
+       *"life_expectancy_years.csv"
+    2. Displays the projection of life expectancy in relation to
+       the gross national product of the year 1900 for each country
+    """
     f_inflat = "../csv_files/"
     f_inflat += "income_per_person_gdppercapita_ppp_inflation_adjusted.csv"
     f_life = "../csv_files/life_expectancy_years.csv"
@@ -45,6 +52,7 @@ def main():
     custom_labels = ['300', '1k', '10k']
     plt.xticks(ticks=custom_ticks, labels=custom_labels)
     plt.show()
+
 
 if __name__ == "__main__":
     main()
