@@ -4,7 +4,8 @@ import os
 
 
 def is_accepted_format(path: str, formats: list) -> bool:
-    """Checks if the format is in the given list of formats.
+    """
+    Checks if the format is in the given list of formats.
     Returns: bool
     """
     _, ext = os.path.splitext(path)
@@ -12,8 +13,10 @@ def is_accepted_format(path: str, formats: list) -> bool:
 
 
 def load(file_path: str) -> np.array:
-    """Loads csv file counts data lines.
-        Returns: NumPy array including the header
+    """
+    Takes an str pas as parameter
+    Loads csv file counts data lines.
+    Returns: NumPy array including the header
     """
 
     # if file exists

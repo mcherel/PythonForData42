@@ -12,8 +12,11 @@ def is_accepted_format(path: str, formats: list) -> bool:
 
 
 def load(file_path: str) -> np.array:
-    """Loads csv file counts data lines
-        Return: whole array including the header"""
+    """
+    Takes an str pas as parameter
+    Loads csv file counts data lines.
+    Returns: NumPy array including the header
+    """
     if not os.path.exists(file_path):
         print(f"Error: No such file or directory: '{file_path}'")
         exit()

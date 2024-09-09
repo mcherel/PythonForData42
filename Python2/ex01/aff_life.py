@@ -4,6 +4,10 @@ import load_csv
 
 
 def main():
+    """
+    1. Loads life_expectancy_years.csv
+    2. Displays the country information of your campus
+    """
     file = "../csv_files/life_expectancy_years.csv"
     lines = load_csv.load(file)
     x = []
@@ -38,7 +42,7 @@ def main():
     y_min = min(y) - y_margin
     y_max = max(y) + y_margin
 
-    plt.margins(x=0.05, y=0.05)
+    # plt.margins(x=0.05, y=0.05)
     plt.xticks(np.arange(min(x), max(x) + 1, 40))
     plt.yticks(np.arange(int(min(y) // 10 * 10), int(max(y) + 20), 10))
     plt.ylim(y_min, y_max)
