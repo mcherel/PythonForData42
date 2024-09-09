@@ -59,14 +59,14 @@ def load(file_path: str) -> np.array:
 
 
 def main():
-    load("")
-    print(load("five.csv"))
+    # load("")
+    # print(load("five.csv"))
     print("later")
     print(load("four.csv"))
-    load("one.csv")
-    load("empty.csv")
-    load(".csv")
-    load("hello.txt")
+    # load("one.csv")
+    # load("empty.csv")
+    # load(".csv")
+    # load("hello.txt")
 
 
 if __name__ == "__main__":
