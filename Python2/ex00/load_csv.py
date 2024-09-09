@@ -25,12 +25,12 @@ def load(file_path: str) -> np.array:
     if file_path == ".csv":
         print("Error: wrong file name")
         exit()
-    
+
     # if the format of the image is not supported
     if not is_accepted_format(file_path, [".csv"]):
         print("Error: wrong extention")
         exit()
-    
+
     # open and read the csv file
     with open(file_path, 'r', encoding='utf-8-sig') as csvfile:
         reader = list(csv.reader(csvfile, delimiter=','))
@@ -52,8 +52,8 @@ def load(file_path: str) -> np.array:
             exit()
         # strip whitespace from all fields including the header
         stripped_rows = [[field.strip()
-                             for field in row]
-                             for row in reader[1:]]
+                         for field in row]
+                         for row in reader[1:]]
         print(f"Loading dataset of dimensions {np.array(stripped_rows).shape}")
         return np.array(reader)
 
