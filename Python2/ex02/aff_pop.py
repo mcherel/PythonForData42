@@ -9,7 +9,7 @@ def main():
     x = []
     y = []
     y1 = []
-    end_year = 2040
+    end_year = 2050
     countries = [i[0] for i in lines[1:]]
     chosen_countries = ['France', 'Russia']
     countries_idx = []
@@ -45,6 +45,9 @@ def main():
     plt.title('Population Projections')
     plt.xlabel('Year')  # adds a label to the x-axis
     plt.ylabel('Population')  # adds a label to the y-axis.
+    custom_ticks = [20, 40, 60, 80, 100, 120, 140]
+    custom_labels = ['20M', '40M', '60M', '80M', '100M', '120M', '140M']
+    plt.yticks(ticks=custom_ticks, labels=custom_labels)
     plt.plot(x, y, color='g', label='Population France')
     plt.plot(x, y1, color='b', label='Population Russia')
     plt.legend(loc='lower right')
