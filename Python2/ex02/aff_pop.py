@@ -4,6 +4,12 @@ import load_csv
 
 
 def main():
+    """
+    1. Loads the file population_total.csv
+    2. Displays the country information of your campus
+    3. Displays the country information of Russia
+    4. Display the years from 1800 to 2050
+    """
     file = "../csv_files/population_total.csv"
     lines = load_csv.load(file)
     x = []
